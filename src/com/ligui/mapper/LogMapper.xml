@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ligui.mapper.logMapper">
+
+	<select id="inslog"  parameterType="log">
+	insert into log values (default,#{accout},#{accin},#{name},#{money})
+	</select>
+		<select id="selByPage" resultType="log" parameterType="map">
+<!-- 		select * from log limit #{pageStart},#{pageSize} -->
+ 		select * from log order by id DESC limit #{pageStart},#{pageSize}  <!-- select * from log order by id DESC  根据id大小来排序显示出来 -->
+	</select>
+	<select id="selCount" resultType="long">
+		select count(*) from log
+	</select>
+</mapper>
